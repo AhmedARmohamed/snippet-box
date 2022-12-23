@@ -17,11 +17,16 @@
             <a href='/snippet/create'>Create snippet</a>
         </nav>
         <section>
+            {{with .Flash}}
+            <div class='flash '>{{.}}</div>
+            {{end}}
             {{template "body" .}}
         </section>
         {{template "footer" .}}
-
-         <script src="/static/js/main.js" type="text/javascript"></script>
-    </body>
+        <script src="/static/js/main.js" type="text/javascript"></script>
+</body>
 </html>
 {{end}}
+
+
+        

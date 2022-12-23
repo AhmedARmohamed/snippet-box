@@ -2,17 +2,17 @@ package main
 
 import (
 	"html/template"
-	"net/url"
 	"path/filepath"
 	"time"
 
+	"github.com/AhmedARmohamed/snippetbox/pkg/forms"
 	"github.com/AhmedARmohamed/snippetbox/pkg/models"
 )
 
 type templateData struct {
 	CurrentYear int
-	FormData url.Values
-	FormErrors map[string]string
+	Flash       string
+	Form        *forms.Form
 	Snippet     *models.Snippet
 	Snippets    []*models.Snippet
 }
