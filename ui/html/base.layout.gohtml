@@ -9,20 +9,25 @@
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
     </head>
     <body>
-        <header>
+       <header>
             <h1><a href='/'>Snippetbox</a></h1>
         </header>
         <nav>
             <div>
                 <a href='/'>Home</a>
-                <a href='/snippet/create'>Create snippet</a>
-            </div>
+                {{if .AuthenticatedUser}}
+                    <a href='/snippet/create'>Create snippet</a>
+                {{end}}
+            </div> 
             <div>
-                <a href='/user/signup'>Signup</a>
-                <a href='/user/login'>Login</a>
-                <form action='/user/logout' method='POST'>
-                    <button>Logout</button>
-                </form>
+                {{if .AuthenticatedUser}}
+                    <form action='/user/logout' method='POST'>
+                        <button>Logout</button>
+                    </form>
+                    {{else}}
+                    <a href='/user/signup'>Signup</a>
+                    <a href='/user/login'>Login</a>
+                {{end}}
             </div>
         </nav>
         <section>
@@ -33,9 +38,6 @@
         </section>
         {{template "footer" .}}
         <script src="/static/js/main.js" type="text/javascript"></script>
-</body>
+    </body>
 </html>
 {{end}}
-
-
-        
